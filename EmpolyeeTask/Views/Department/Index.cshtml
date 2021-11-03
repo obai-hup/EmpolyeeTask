@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Department>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastModifiedAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            @if (item.LastModifiedBy != null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastModifiedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastModifiedAt)
+                </td>
+            }
+            else
+            {
+                <td>
+                    not Modified
+                </td>
+                <td>
+                    not Modified
+                </td>
+            }
+
+
+
+            <td>
+                <a asp-controller="Department" class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.ID"><i class="fas fa-edit"></i></a>
+                <a asp-controller="Department" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.ID"><i class="far fa-trash"></i></a>
+                <a asp-controller="Department" class="btn btn-outline-secondary" asp-action="Create"><i class="far fa-plus"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

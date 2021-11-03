@@ -1,0 +1,72 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center"> Edit Employee</h1>
+
+
+<hr />
+<div class="row m-auto justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" autocomplete="off" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" autocomplete="off" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label"></label>
+                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.Country">
+                    <option value="0">Choose A Category</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartId" class="control-label"></label>
+                <select asp-for="DepartId" class="form-control" asp-items="ViewBag.Depart">
+                    <option value="0">Choose A Departmenet</option>
+                </select>
+            </div>
+
+
+
+
+            <div class="form-group mt-3 text-center ">
+                <input type="submit" value="Edit" class="btn btn-outline-primary btn-block " />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="d-flex justify-content-end" style="font-size: x-large"> <i class="fas fa-chevron-circle-left 4x"></i> </a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
